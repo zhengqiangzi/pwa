@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<meta charset="utf-8"/>
+	<title>angularJS with pwa</title>
+	<link type="text/css" rel="styleSheet" href="./dist/index.css"/>
+	<link rel="manifest" href="/manifest.json">
+	<script type="text/javascript">
+		
+			navigator.serviceWorker.register("sw.js").then(function(registration){
+
+
+			});
+
+			navigator.serviceWorker.onmessage=function(){
+
+				console.log(arguments)
+			}
+
+	</script>
+</head>
+<body ng-controller="mainCtrl">
+		
+	<div style="display: flex;align-items: center;justify-content: center;width:70%;margin:auto;">
+		
+		<img src="1.gif" alt="" style="max-width: 100%;height: auto;">
+	</div>
+
+
+	<video src="2.mp4" autoplay="autoplay" style="max-width: 100%;" controls="controls">
+		
+
+	</video>
+
+
+	<div class="main">
+			<ul class="PersonTypeList">
+				<li>
+					<a href='javascript:void(0)' ng-click="changeTypeHandler(0)">[All]</a>
+
+				</li>
+				<li ng-repeat="item in groupData">
+					
+					<a href='javascript:void(0)' ng-click="changeTypeHandler(item[0].type.typeId)">[{{item[0].type.typeName}}]</a>
+
+				</li>
+			
+			</ul>
+		
+			<ul class="PersonList">
+				<li ng-repeat="item in currentData">{{item.name}}----{{item.age}}----{{item.type.typeName}}</li>
+				
+			</ul>
+
+		
+	</div>
+
+
+<script type="text/javascript" src="./dist/index.js"></script>
+</body>
+</html>
